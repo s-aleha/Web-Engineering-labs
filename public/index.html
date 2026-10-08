@@ -7,7 +7,138 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1 id="greeting">Loading...</h1>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+      <p class="site-title">Web Engineering Lab</p>
+      <h1 id="greeting">Hello, World!</h1>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#schedule" aria-current="location">Office Hours</a></li>
+          <li><a href="#feedback">Send Feedback</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section id="schedule" aria-labelledby="schedule-heading">
+        <h2 id="schedule-heading">Office Hours</h2>
+        <table>
+          <caption>
+            Weekly office hours
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Time</th>
+              <th scope="col">Instructor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>
+                <time datetime="10:00">10:00</time>–<time datetime="11:00"
+                  >11:00</time
+                >
+              </td>
+              <td>Lab Engineer</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>
+                <time datetime="14:00">14:00</time>–<time datetime="15:00"
+                  >15:00</time
+                >
+              </td>
+              <td>Course Instructor</td>
+            </tr>
+            <tr>
+              <td>Friday</td>
+              <td>
+                <time datetime="09:00">09:00</time>–<time datetime="10:00"
+                  >10:00</time
+                >
+              </td>
+              <td>Lab Engineer</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <figure>
+          <svg
+            role="img"
+            aria-labelledby="pin-title"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <title id="pin-title">Location pin</title>
+            <path
+              d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"
+              fill="#c0392b"
+            />
+          </svg>
+          <figcaption>All office hours are held in Room 214.</figcaption>
+        </figure>
+      </section>
+
+      <svg
+        aria-hidden="true"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        class="divider"
+      >
+        <circle cx="12" cy="12" r="3" fill="#0b3d91" />
+      </svg>
+
+      <section id="feedback" aria-labelledby="feedback-heading">
+        <h2 id="feedback-heading">Send Feedback</h2>
+        <form action="#" method="post" novalidate>
+          <p>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </p>
+
+          <p>
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              aria-describedby="email-hint"
+            />
+            <span id="email-hint">We will only use this to reply to you.</span>
+          </p>
+
+          <fieldset>
+            <legend>Topic</legend>
+            <label>
+              <input type="radio" name="topic" value="lab" checked />
+              Lab content
+            </label>
+            <label>
+              <input type="radio" name="topic" value="other" />
+              Something else
+            </label>
+          </fieldset>
+
+          <p>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </p>
+
+          <button type="submit">Send feedback</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <address>Contact your instructor for help — Room 214, SSCIT.</address>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
