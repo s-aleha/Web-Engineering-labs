@@ -324,3 +324,102 @@
     color: #ffffff;
   }
 }
+
+
+/* ================= Lab 04: Flexbox, Grid, Modules and the DOM ================= */
+
+/* PART A: Flexbox (Tasks 1 to 3) */
+@layer components {
+  .site-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block-end: var(--space-3);
+    border-block-end: 1px solid var(--color-border);
+  }
+
+  nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  figure {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  figure figcaption {
+    margin-block-start: 0;
+  }
+}
+
+/* PART A: Grid (Tasks 4 to 5) */
+@layer components {
+  #schedule {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-3);
+    align-items: start;
+  }
+
+  #schedule > p,
+  #schedule > table,
+  #schedule > figure {
+    margin-block: 0;
+  }
+
+  form {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--space-3);
+  }
+
+  form p {
+    margin-block-end: var(--space-3);
+  }
+
+  fieldset {
+    margin-block-end: var(--space-3);
+  }
+
+  form button {
+    justify-self: start;
+  }
+
+  input:not([type="radio"]),
+  textarea {
+    inline-size: 100%;
+  }
+
+  input[type="radio"] {
+    inline-size: auto;
+  }
+}
+
+/* PART B: selected row (Task 9) */
+@layer components {
+  tr.selected th,
+  tr.selected td {
+    background: color-mix(in oklch, var(--color-accent) 20%, var(--color-bg));
+  }
+}
+
+/* Utility used by the grids */
+@layer utilities {
+  .span-all {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Task 6: one media query, single column on narrow screens */
+@media (max-width: 40rem) {
+  #schedule,
+  form {
+    grid-template-columns: 1fr;
+  }
+}

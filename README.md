@@ -88,3 +88,23 @@ This repository contains all lab work for the Web Engineering course.
 ## 🧪 Testing Results
 
 ### axe DevTools Scan
+
+---
+
+## Lab 04: Flexbox, Grid, Modules and the DOM
+
+**Topics covered:**
+
+- Flexbox for the header, navigation and location figure
+- Grid for the Office Hours section (`2fr 1fr`) and the two-column feedback form
+- One media query that switches both grids to a single column at 40rem
+- ES modules (`main.js`, `utils.js`) with `import` and `export`
+- DOM: `querySelector`, `querySelectorAll`, `classList.toggle`, `dataset`, `closest` and event delegation
+- Event loop, microtasks, `async/await` and closures (see `NOTES.md`)
+
+**Files:**
+
+- `public/styles.css`: Flexbox and Grid layout, `.span-all`, selected-row style
+- `public/main.js`: delegated click handler for booking a slot
+- `public/utils.js`: `delay()` and `makeCounter()`
+- `NOTES.md`: event-loop prediction and explanation
