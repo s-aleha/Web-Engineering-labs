@@ -1,27 +1,28 @@
-import { delay, makeCounter } from "./utils.js";
-
-const status = document.querySelector("#status");
-const tbody = document.querySelector("#schedule tbody");
+import { delay, makeCounter, getRequired, describeSlot, } from "./utils.js";
+const slots = [
+    { day: "Monday", start: "10:00", end: "11:00", room: "Room 214" },
+    { day: "Wednesday", start: "14:00", end: "15:00", room: "Room 214" },
+    { day: "Friday", start: "09:00", end: "10:00", room: "Room 214" },
+];
+const status = getRequired("#status");
+const tbody = getRequired("#schedule tbody");
 const nextBooking = makeCounter();
-
-// Event delegation: ONE listener on the tbody handles every button.
 tbody.addEventListener("click", async (event) => {
-  const button = event.target.closest("button[data-day]");
-  if (!button) return;
-
-  const day = button.dataset.day;
-  const row = button.closest("tr");
-
-  status.textContent = `Updating ${day}...`;
-  await delay(1000); // pauses only this handler, the page stays responsive
-
-  const booked = row.classList.toggle("selected");
-  const count = document.querySelectorAll("#schedule tr.selected").length;
-
-  button.textContent = booked ? "Cancel" : "Select";
-  button.setAttribute("aria-label", `${booked ? "Cancel" : "Select"} ${day}`);
-
-  status.textContent = booked
-    ? `Booking #${nextBooking()} confirmed for ${day}. ${count} slot(s) booked.`
-    : `${day} cancelled. ${count} slot(s) booked.`;
+    const target = event.target;
+    if (!(target instanceof Element))
+        return;
+    const button = target.closest("button[data-day]");
+    const row = target.closest("tr");
+    if (button === null || row === null)
+        return;
+    const slot = slots.find((s) => s.day === button.dataset.day);
+    if (slot === undefined)
+        return;
+    status.textContent = `Updating ${slot.day}…`;
+    await delay(1000);
+    const booked = row.classList.toggle("selected");
+    const count = document.querySelectorAll("#schedule tr.selected").length;
+    status.textContent = booked
+        ? `Booking #${nextBooking()} confirmed: ${describeSlot(slot)}. ${count} of ${slots.length} slots booked.`
+        : `Booking for ${slot.day} cancelled. ${count} of ${slots.length} slots booked.`;
 });

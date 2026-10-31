@@ -43,6 +43,9 @@
     --color-border: color-mix(in oklch, var(--color-text) 45%, var(--color-bg));
 
     --color-muted: color-mix(in oklch, var(--color-text) 70%, var(--color-bg));
+
+    /* Lab 05: error colour token */
+    --color-error: light-dark(oklch(45% 0.2 25), oklch(75% 0.15 25));
   }
 
   html {
@@ -325,7 +328,6 @@
   }
 }
 
-
 /* ================= Lab 04: Flexbox, Grid, Modules and the DOM ================= */
 
 /* PART A: Flexbox (Tasks 1 to 3) */
@@ -421,5 +423,19 @@
   #schedule,
   form {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ================= Lab 05: Legacy Code and TypeScript ================= */
+
+/* Task 4: error message and invalid field styles */
+@layer components {
+  .error {
+    display: block;
+    color: var(--color-error);
+  }
+
+  input[aria-invalid="true"] {
+    border-color: var(--color-error);
   }
 }
